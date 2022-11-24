@@ -15,7 +15,18 @@ $(document).keypress(function  ()  {
 
 })
 
-$('.btn').click(function () {
+$('#button').click(function  ()  {
+
+    if(stack.length === 0){
+        
+        $('h1').text(`Level ${stack.length + 1}`);
+        generator();
+
+    }
+
+})
+
+$('._btn').click(function () {
 
     if(stack.length !== 0){
 
