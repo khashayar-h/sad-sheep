@@ -4,7 +4,7 @@ let inputStack = [];
 
 let passedIndex = 0;
 
-$(document).click(function  ()  {
+$(document).keypress(function  ()  {
 
     if(stack.length === 0){
         
