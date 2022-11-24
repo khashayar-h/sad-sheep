@@ -8,7 +8,7 @@ $(document).keypress(function  ()  {
 
     if(stack.length === 0){
         
-        $('h1').text(`Level ${stack.length + 1}`);
+        $('h1').text(`مرحله 🐑  ${stack.length + 1}`);
         generator();
 
     }
@@ -37,7 +37,7 @@ $('._btn').click(function () {
                 inputStack = [];
                 stack = [];
                 passedIndex = 0;
-                $('h1').text('GAME OVER');
+                $('h1').text('هه هه هه باختی😂😐');
                 let audio = new Audio('./sounds/wrong.mp3');
                 audio.play();
                 return;
@@ -81,7 +81,7 @@ function animator(color) {
 
 function generator() {
 
-    $('h1').text(`Level ${stack.length + 1}`);
+    $('h1').text(`مرحله 🐑  ${stack.length + 1}`);
     let random = Math.floor(Math.random() * 4) + 1; 
     stack.push(random);
     let color = switcher(random);
