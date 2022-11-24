@@ -4,10 +4,41 @@ let inputStack = [];
 
 let passedIndex = 0;
 
+let defaultTimer = 10;
+
+let started = false;
+
+let score = 0;
+
+let lastScore = 0;
+
+let confetti = false;
+
+let timer;
+
+
+let myVar = setInterval(function() {
+    if( timer > 0 && started === true){
+    timer--;
+    minutes = Math.round(timer / 60);
+    seconds = timer % 60;
+    $('#time').text(`${minutes} : ${seconds}`)
+    }
+     else if( timer === 0){
+        timer = -1;
+        started = true;
+        gameOver();
+        return;
+    }
+  } ,1000);
+ 
+
 $(document).keypress(function  ()  {
 
     if(stack.length === 0){
         
+        started = true;
+        timer = defaultTimer;
         $('h1').text(`مرحله 🐑  ${stack.length + 1}`);
         generator();
 
@@ -19,12 +50,33 @@ $('#button').click(function  ()  {
 
     if(stack.length === 0){
         
+        started = true;
+        timer = defaultTimer;
         $('h1').text(`Level ${stack.length + 1}`);
         generator();
 
     }
 
 })
+
+function gameOver() {
+
+    inputStack = [];
+    stack = [];
+    passedIndex = 0;
+    $('h1').text('هه هه هه باختی😂😐');
+    let audio = new Audio('./sounds/wrong.mp3');
+    audio.play();
+    $('#time').text(`${00} : ${00}`)
+    started = false;
+    if(score > lastScore){
+    lastScore = score;
+    }
+    $('#highScore').text(lastScore);
+    score = 0;
+    return;
+
+}
 
 $('._btn').click(function () {
 
@@ -34,12 +86,7 @@ $('._btn').click(function () {
 
             if(stack[passedIndex] != inputStack[passedIndex]){
 
-                inputStack = [];
-                stack = [];
-                passedIndex = 0;
-                $('h1').text('هه هه هه باختی😂😐');
-                let audio = new Audio('./sounds/wrong.mp3');
-                audio.play();
+                gameOver();
                 return;
 
             }  else if (stack[passedIndex] === inputStack[passedIndex]) {
@@ -52,6 +99,7 @@ $('._btn').click(function () {
             
             if(passedIndex === stack.length){
 
+                timer += stack.length;
                 setTimeout(function() {
                     inputStack = [];
                     passedIndex = 0;
@@ -81,12 +129,23 @@ function animator(color) {
 
 function generator() {
 
+    score += 1;
+    $('#score').text(score);
     $('h1').text(`مرحله 🐑  ${stack.length + 1}`);
     let random = Math.floor(Math.random() * 4) + 1; 
     stack.push(random);
     let color = switcher(random);
     player(color);
     animator(color);
+    if(score > lastScore && lastScore != 0 && confetti === false){
+        startConfetti();
+        let audio = new Audio('./sounds/sheep.mp3');
+        audio.play();
+        setTimeout(function(){
+            stopConfetti();
+            confetti = true;
+        }, 5000);
+    }
     console.log(stack)
 
 }

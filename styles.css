@@ -2,17 +2,7 @@ body {
   text-align: center;
   background-color: #011F3F;
   zoom: 0.75;
-}
-
-#bio {
   font-family: 'Shabnam', cursive;
-  font-size: 1.5rem;
-  bottom: 0;
-  margin-bottom: 35px;
-  color: #FEF2BF;
-  position: fixed;
-  display: flex;
-  justify-content: center;
 }
 
 #level-title {
@@ -62,4 +52,10 @@ body {
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+}
+
+#confetti-canvas {
+  position:absolute;
+  top:0;
+  width: 100%;
 }

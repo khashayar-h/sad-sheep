@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="rtl">
 
 <head>
   <meta charset="utf-8">
@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="overflow-hidden">
+<body class="overflow-hidden overflow-sm-visible">
   <h1 id="level-title">به بازی ببعی غمگین خوش آمدید 😐 برای شروع دکمه را فشار بدید</h1>
   <div class="d-flex flex-column">
     <div class="row d-flex justify-content-center">
@@ -45,14 +45,20 @@
 
   </div>
 
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center flex-sm-row flex-column align-items-center mt-5 mt-sm-0">
+      <p class="fw-bold text-center text-light" style="font-size: 2rem;" id="time">00 : 00</p>
+      <p class="fw-bold text-center text-light me-sm-5" style="font-size: 2rem;"> امتیازت&nbsp;
+        <p class="fw-bold text-center text-light" style="font-size: 2rem;" id="score"></p>
+      </p>
 
-    <h3 id="bio">این بازی توسط یه نفری به اسم خشایار درست شده 👨‍💻</h3>
-
+      <p class="fw-bold text-center text-light me-sm-5" style="font-size: 2rem;"> بیشترین امتیازت &nbsp;
+        <p class="fw-bold text-center text-light" style="font-size: 2rem;" id="highScore">0</p>
+      </p>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="game.js" charset="utf-8"></script>
+  <script src="confetti.js"></script>
 
 </body>
 
